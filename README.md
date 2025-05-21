@@ -1,4 +1,4 @@
-RESTful api for a platform that links between patiants and doctors, built with Express js and PostgreSQL for the database;
+RESTful api for a platform that links between patients and doctors, built with Express js and PostgreSQL for the database;
 
 setup environment variables, and start the server with : <code>npm start</code>
 
