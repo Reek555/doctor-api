@@ -11,9 +11,7 @@ const adminRouter = require('./adminRoutes')
 
 router.get('/home',  (req, res) => {
 
-    console.log(req.path)
-    console.log (typeof(req.path))
-    res.json({message: 'مرحبا بك في تطبيق طبيبي'})
+    res.json({message: 'welcome home.'})
 
 
 })

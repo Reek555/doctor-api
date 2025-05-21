@@ -24,7 +24,7 @@ app.use ("/", routes)
 
 
 app.use ((req, res, next) => {
-    const err = new Error('الصفحة المطلوبة غير موجودة')
+    const err = new Error('page not found!')
     err.status = 404
     //throw err
     next(err)

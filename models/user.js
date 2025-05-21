@@ -8,6 +8,7 @@ const User = db.define ('user', {
     }, 
     email: {
         type: Sequelize.DataTypes.STRING,
+        unique: true
     }, 
     password: {
         type: Sequelize.DataTypes.STRING, 

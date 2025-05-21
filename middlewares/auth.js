@@ -12,6 +12,8 @@ const isLoggedin = (req, res, next) => {
         } 
         
         const token = req.headers.authorization.split(' ')[1];
+        //console.log(token)
+
         const decoded = jsonwebtoken.verify(token, process.env.JWT_SECRET)
         req.currentUser = decoded
         next()

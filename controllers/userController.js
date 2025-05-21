@@ -27,12 +27,20 @@ exports.register = async (req, res) => {
             })
         }
 
-        //console.log (user.toJSON())
+        console.log (user.toJSON())
         res.status(200).json({message: 'account created successfully'})
 
     }
     catch (e) {
-        res.status(500).json(e)
+        if (e.name){cl
+            if (e.name = 'SequelizeUniqueConstraintError') {
+                res.json({"error": "email already exist"})
+            }
+        }
+        else {
+            res.status(500).json()
+
+        }
 
     }
 }
@@ -44,14 +52,14 @@ exports.login = async (req, res) => {
         const user = await models.User.findOne ({where: {email}})
         if (!user) {
             return res.status(401).json ({
-                message: 'كلمة المرور أو البريد إلكتروني غير صحيح'
+                message: 'incorrect email or password!'
             })
         }
         const authSuccess = await bcrypt.compare(password, user.password)
 
         if (!authSuccess) {
             return res.status(401).json ({
-                message: 'كلمة المرور أو البريد إلكتروني غير صحيح'
+                message: 'incorrect email or password!'
             })
         }
 
@@ -70,6 +78,8 @@ exports.login = async (req, res) => {
 
 exports.me = async (req, res) => {
     const user = await models.User.findByPk(req.currentUser.id)
+    if (user != null) delete user.dataValues.password; 
+    //console.log (user)
     res.json (user)
 }
 
@@ -136,7 +146,7 @@ exports.update = async (req, res) => {
         }
 
 
-        res.status(200).json({msg: 'تم تحديث معلومات حسابك'})
+        res.status(200).json({msg: 'profile is updated.'})
 
 
     }
@@ -154,7 +164,7 @@ exports.delete = async (req, res) => {
             where: {id: req.currentUser.id}
         })
 
-        res.status(200).json({msg: 'تم حذف الحساب'})
+        res.status(200).json({msg: 'account deleted'})
 
 
         }

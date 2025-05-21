@@ -1,12 +1,13 @@
 const { body, query, matchedData, validationResult } = require('express-validator');
 
+
 const userValidationRules = () => {
     return [
-        body('name').notEmpty().withMessage('الاسم مطلوب'),
-        body('email').notEmpty().withMessage('البريد الإلكتروني مطلوب'),
-        body('email').isEmail().withMessage('أدخل بريد صحيح'),
-        body('password').notEmpty().withMessage('كلمة المرور مطلوبة'),
-        body('password').isLength({min: 5}).withMessage('كلمة المرور يجب أن تكون أكثر من 5 محارف')
+        body('name').notEmpty().withMessage('name required'),
+        body('email').notEmpty().withMessage('email required'),
+        body('email').isEmail().withMessage('enter a valid email address'),
+        body('password').notEmpty().withMessage('password is required'),
+        body('password').isLength({min: 5}).withMessage('password must be at least 5 char long')
     ]
 }
 
