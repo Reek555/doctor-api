@@ -1,6 +1,6 @@
 RESTful api for a platform that links between patients and doctors, built with Express js and PostgreSQL for the database;
 
-setup environment variables, and start the server with : <code>npm start</code>
+recreate .env file and start the server with : <code>npm start</code>
 
 
 <h1>End points</h1>
